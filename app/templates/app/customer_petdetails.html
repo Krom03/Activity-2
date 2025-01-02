@@ -1,0 +1,27 @@
+{% extends 'app/customer_dashboard.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid" id="view-pet-details">
+        <div class="container">
+            <br> <br>
+            <h2 id="pet-name-details">{{ pet.pet_name }}'s Details</h3> 
+            <br>
+            <ul id="pet-details">
+                <li><strong>Name:</strong> {{ pet.pet_name }}</li>
+                <li><strong>Breed:</strong> {{ pet.breed }}</li>
+                <li><strong>Weight:</strong> {{ pet.weight }} kg</li>
+                <li><strong>Sex:</strong> {{ pet.get_sex_display }}</li>
+                <li><strong>Vaccination Status:</strong> {{ pet.get_vaccination_status_display }}</li>
+            </ul>
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'update-pet' pet.pk %}" class="btn btn-warning" id="edit-pet-button">Edit Pet</a>
+                </div>
+                <div class="col">
+                    <a href="{% url 'delete-pet' pet.pk %}" class="btn btn-danger" id="delete-pet-button">Delete Pet</a>
+                </div>
+            </div> <br>
+            <a href="{% url 'customer-pets' %}" class="btn btn-secondary" id="back-button">Back to Pets</a>
+        </div>
+    </div>    
+{% endblock content %}

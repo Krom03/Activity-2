@@ -1,0 +1,163 @@
+* {
+    font-family: "Poppins", serif !important;
+}
+
+#fixednav {
+    margin: 0 !important; 
+    padding:0 !important; 
+    position: fixed;
+    background-color: #205A28 !important;
+}
+
+#navbg, .bg-body-tertiary {
+    background-color: #205A28 !important;
+}
+
+#navbg a {
+    color: #FFFFFF;
+}
+
+#main-content-area {
+    padding-top: 65px;
+    background-color: #FFFDF2;
+    height: 100vh;
+}
+
+#home-container h1 {
+    color: #2C5F2D;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    padding-top: 100px;
+}
+
+#create-account .container, #create-pet-profile .container, 
+#view-pet-details .container, #edit-pet-profile .container,
+#delete-pet-profile .container {
+    width: 475px !important; 
+    margin-top: 35px;
+}
+
+#create, #login {
+    color: #2C5F2D;
+    text-align: center; 
+    padding-top: 10px; 
+    padding-bottom: 20px;
+}
+
+#register {
+    width: 100%;
+}
+
+#login-account .container {
+    width: 375px !important; 
+    margin-top: 35px;
+}
+
+#log_in {
+    width: 100%;
+}
+
+.mb-3 input, .mb-3 select {
+    border: 2px solid black !important;
+}
+
+#customer-dashboard-container h1 {
+    color: #2C5F2D;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    padding-top: 100px;
+}
+
+#customer-dashboard-container p {
+    font-family: "Poppins", serif;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#pet-list-container {
+    width: 800px;
+}
+
+#pet-list-container h1 {
+    color: #2C5F2D;
+    text-align: center; 
+}
+
+#pet-list-container h3, #pet-list-container ul, #pet-list-container p {
+    color: #333333;
+}
+
+#pet-list-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-left: 40px;
+}
+
+#pet-list-header a {
+    margin-right: 25px;
+}
+
+#pet {
+    border-top: 1px solid black;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px; 
+    padding-top: 20px; 
+}
+
+#pet-left {
+    margin-left: 10px;
+}
+
+#pet-right {
+    margin-right: 15px;
+}
+
+#add-pet-title {
+    color: #2C5F2D;
+    text-align: center; 
+    padding-bottom: 5px;
+}
+
+#add-pet-button, #edit-pet-button, #delete-pet-button, #back-button {
+    width: 100% !important;
+}
+
+#create-pet-form input, select {
+    border: 2px solid black !important;
+}
+
+#pet-details {
+    list-style: none;
+    border-top: 1px solid black;
+    margin-bottom: 20px; 
+    padding-top: 20px; 
+}
+
+#pet-name-details {
+    color: #2C5F2D;
+    text-align: center; 
+    padding-bottom: 5px;
+}
+
+#edit-pet-details {
+    color: #2C5F2D;
+    text-align: center; 
+    padding-bottom: 5px;
+}
+
+#edit-pet-form input, select {
+    border: 2px solid black !important;
+}
+
+#pet-profile-delete {
+    color: #2C5F2D;
+    text-align: center; 
+    padding-bottom: 5px;
+}

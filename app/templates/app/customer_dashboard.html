@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" id="navbg">
+            <a class="navbar-brand" href="{% url 'customer-dashboard' %}">CuddleCrest Pet Daycare</a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'customer-dashboard' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'customer-pets' %}">Pets</a>
+                </li>    
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <form action="{% url 'logout' %}" method="POST" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" style="margin-left: 15px;">Log out</button>
+                    </form>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container" id="customer-dashboard-container">
+        <h1>Customer Dashboard</h1>
+        <p>Welcome {{ user.username }}!</p>
+        <h1> Pet Profile Management is Functional w/ CRUD </h1>
+    </div>
+{% endblock content %}
