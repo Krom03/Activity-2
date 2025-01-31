@@ -2,6 +2,10 @@
     font-family: "Poppins", serif !important;
 }
 
+body {
+    background-color: #FFFDF2;
+}
+
 #fixednav {
     margin: 0 !important; 
     padding:0 !important; 
@@ -19,22 +23,36 @@
 
 #main-content-area {
     padding-top: 65px;
-    background-color: #FFFDF2;
-    height: 100vh;
+    height: 100vh auto;
+}
+
+#home-greetings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#home-title {
+    font-family: "Belanosima", serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 70px;
+}
+
+#home-sub-title {
+    font-family: "Belanosima", serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 40px;
 }
 
 #home-container h1 {
     color: #2C5F2D;
-    font-family: "Poppins", serif;
-    font-weight: 500;
-    font-style: normal;
     text-align: center;
-    padding-top: 100px;
 }
 
-#create-account .container, #create-pet-profile .container, 
-#view-pet-details .container, #edit-pet-profile .container,
-#delete-pet-profile .container {
+#page-container-headers .container {
     width: 475px !important; 
     margin-top: 35px;
 }
@@ -59,50 +77,35 @@
     width: 100%;
 }
 
-.mb-3 input, .mb-3 select {
+.mb-3 input, .mb-3 select, #activities, #notes, #service_description {
     border: 2px solid black !important;
 }
 
-#customer-dashboard-container h1 {
-    color: #2C5F2D;
-    font-family: "Poppins", serif;
-    font-weight: 500;
-    font-style: normal;
-    text-align: center;
-    padding-top: 100px;
-}
-
-#customer-dashboard-container p {
-    font-family: "Poppins", serif;
-    text-align: center;
-    padding-top: 50px;
-}
-
-#pet-list-container {
+#list-container {
     width: 800px;
 }
 
-#pet-list-container h1 {
+#list-container h1 {
     color: #2C5F2D;
     text-align: center; 
 }
 
-#pet-list-container h3, #pet-list-container ul, #pet-list-container p {
+#list-container h3, #list-container ul, #list-container p {
     color: #333333;
 }
 
-#pet-list-header {
+#list-header {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
     margin-left: 40px;
 }
 
-#pet-list-header a {
+#list-header a {
     margin-right: 25px;
 }
 
-#pet {
+#list-items {
     border-top: 1px solid black;
     display: flex; 
     justify-content: space-between; 
@@ -119,45 +122,73 @@
     margin-right: 15px;
 }
 
-#add-pet-title {
+#title-header {
     color: #2C5F2D;
     text-align: center; 
     padding-bottom: 5px;
 }
 
-#add-pet-button, #edit-pet-button, #delete-pet-button, #back-button {
+#pet-image{
+    margin-left: 100px;
+}
+
+#action-button, #back-button {
     width: 100% !important;
 }
 
-#create-pet-form input, select {
+#create-edit-form input, select {
     border: 2px solid black !important;
 }
 
-#pet-details {
+#details {
     list-style: none;
     border-top: 1px solid black;
     margin-bottom: 20px; 
     padding-top: 20px; 
 }
 
-#pet-name-details {
+#title-details {
     color: #2C5F2D;
     text-align: center; 
     padding-bottom: 5px;
 }
 
-#edit-pet-details {
-    color: #2C5F2D;
-    text-align: center; 
-    padding-bottom: 5px;
+#pet-records-list {
+    border-top: 1px solid black;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
 }
 
-#edit-pet-form input, select {
-    border: 2px solid black !important;
+#pet-records-list a{
+    padding-bottom: 20px; 
+    list-style: none !important;
 }
 
-#pet-profile-delete {
-    color: #2C5F2D;
-    text-align: center; 
-    padding-bottom: 5px;
+#pet-records {
+    width: 100%;
+}
+
+.table {
+    background-color: transparent !important;
+    border-collapse: collapse;
+}
+
+.table tr {
+    background-color: transparent !important;
+}
+
+.table td {
+    background-color: transparent !important;
+}
+
+#date {    
+    width: 580px;
+}
+
+.service-description, .activities, .notes {
+    word-wrap: break-word;
+    white-space: pre-line;
+    max-width: 92%;
+    overflow-wrap: break-word;
 }

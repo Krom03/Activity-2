@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <br> 
+        <br>
+        <h2 id="title-header">{{ service.service_name }}</h3> 
+        <br>
+        <ul id="details">
+            <li><strong>Service Description</strong></li>
+            <li><p class="service-description">{{ service.service_description }}</p></li>
+            <li><strong>Price: ₱ </strong> {{ service.price }}</li>
+        </ul>
+        {% if user.is_staff %}
+        <div class="row">
+            <div class="col">
+                <a href="{% url 'services_update' service.pk %}" class="btn btn-warning" id="action-button">Edit Service</a>
+            </div>
+            <div class="col">
+                <a href="{% url 'services_delete' service.pk %}" class="btn btn-danger" id="action-button">Delete Service</a>
+            </div>  
+        </div> 
+        {% endif %}
+        <br>
+        <a href="{% url 'services_list' %}" class="btn btn-secondary" id="back-button">Back to Pets</a>
+    </div>
+</div> 
+{% endblock content %}

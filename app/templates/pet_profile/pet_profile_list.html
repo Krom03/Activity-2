@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" id="list-container">
+    <br>
+    <br>
+    <h1>Pet Profiles</h1> <br>
+    <div id="list-header">
+        <h3>List of Pets :</h3>
+        <a href="{% url 'pet_profile_create' %}" class="btn btn-success">Add New Pet</a> 
+    </div>
+    <br>
+    {% if pets %}
+        <ul>
+            {% for pet in pets %}
+                <li id="list-items">
+                    <div class="row" style="width: 100%;">
+                        <div class="col-2">
+                            <div style="height: 70px; width: 70px; margin-left: 20px;
+                                background-image: url('{% if pet.pet_image %}{{ pet.pet_image.url }}{% else %}/static/images/default_pet.png{% endif %}'); 
+                                background-size: cover; 
+                                background-position: center;
+                                border: 2px solid #2C5F2D;">
+                            </div>
+                        </div>   
+                        <div class="col-7">
+                            <strong>Name:</strong> {{ pet.pet_name }} <br>
+                            <strong>Breed:</strong> {{ pet.breed }} <br>
+                            {% if request.user.is_staff %}
+                            <strong>Owner:</strong> {{ pet.owner }} <br>
+                            {% endif %}
+                        </div>                        
+                        <div class="col" style="padding-top: 15px; padding-left: 20px;">
+                            <a href="{% url 'pet_profile_detail' pet.pk %}" class="btn btn-info">View Pet Details</a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <li id="list-items">
+            <p>No registered any pets yet.</p>
+        </li>
+    {% endif %}
+</div>
+<br>  
+<br>
+{% endblock content %}

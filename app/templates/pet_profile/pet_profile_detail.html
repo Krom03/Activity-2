@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <h2 id="title-header">{{ pet.pet_name }}'s Details</h3>
+            <div style="height: 200px; width: 200px; margin-left: 125px;
+                background-image: url('{% if pet.pet_image %}{{ pet.pet_image.url }}{% else %}/static/images/default_pet.png{% endif %}'); 
+                background-size: cover; 
+                background-position: center;
+                border: 2px solid #2C5F2D;">
+            </div>
+        <br>
+        <ul id="details">
+            <li><strong>Name:</strong> {{ pet.pet_name }}</li>
+            <li><strong>Breed:</strong> {{ pet.breed }}</li>
+            <li><strong>Weight:</strong> {{ pet.weight }} kg</li>
+            <li><strong>Sex:</strong> {{ pet.get_sex_display }}</li>
+            <li><strong>Vaccination Status:</strong> {{ pet.get_vaccination_status_display }}</li>
+        </ul>
+        <div class="row">
+            <div class="col">
+                <a href="{% url 'pet_profile_update' pet.pk %}" class="btn btn-warning" id="action-button">Edit Pet</a>
+            </div>
+            <div class="col">
+                <a href="{% url 'pet_profile_delete' pet.pk %}" class="btn btn-danger" id="action-button">Delete Pet</a>
+            </div>  
+        </div> 
+        <br>
+        <a href="{% url 'pet_profile_list' %}" class="btn btn-secondary" id="back-button">Back to Pets</a>
+    </div>
+</div>    
+{% endblock content %}

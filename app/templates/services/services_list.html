@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container" id="list-container">
+    <br>
+    <br>
+    <h1>Services</h1> <br>
+    <div id="list-header">
+        <h3>List of Offered Services :</h3>
+        {% if request.user.is_staff %}
+        <a href="{% url 'services_create' %}" class="btn btn-success">Add New Service</a> 
+        {% endif %}
+    </div>
+    <br>
+    {% if services %}
+        <ul>
+            {% for service in services %}
+                <li id="list-items">
+                    <div id="pet-left">
+                        <strong>{{ service.service_name }}</strong><br>
+                        <strong>Price: ₱ </strong> {{ service.price }} <br>
+                    </div>                        
+                    <div id="pet-right">
+                        <a href="{% url 'services_detail' service.pk %}" class="btn btn-info">View Service</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <li id="list-items">
+            <p>No registered services yet.</p>
+        </li>
+    {% endif %}
+</div>
+<br> 
+<br>
+{% endblock content %}

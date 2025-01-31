@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <br> 
+        <br>
+        <h2 id="title-header"> Delete {{ pet.pet_name }}'s Profile?</h2> 
+        <br>
+        <ul id="details">
+            <li><strong>Name:</strong> {{ pet.pet_name }}</li>
+            <li><strong>Breed:</strong> {{ pet.breed }}</li>
+            <li><strong>Weight:</strong> {{ pet.weight }} kg</li>
+            <li><strong>Sex:</strong> {{ pet.get_sex_display }}</li>
+            <li><strong>Vaccination Status:</strong> {{ pet.get_vaccination_status_display }}</li>
+        </ul>
+        <div class="row">
+            <div class="col">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Confirm Delete" class="btn btn-danger" id="action-button">
+                </form>
+            </div>
+            <div class="col">
+                <a href="{% url 'pet_profile_list' %}" class="btn btn-secondary" id="back-button">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>    
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <br> 
+        <br>
+        <h2 id="title-header">Appointment Details</h2> 
+        <br>
+        <ul id="details">
+            <li><strong>Pet Name:</strong> {{ appointment.pet.pet_name }}</li>
+            <li><strong>Date:</strong> {{ appointment.date }}</li>
+            <li><strong>Time:</strong> {{ appointment.time }}</li>
+            <li><strong>Status:</strong> {{ appointment.status }}</li>
+            <li><strong>Booked Services:</strong></li>
+                <ul>
+                {% for service in appointment.services.all %}
+                    <li>{{ service.service_name }}</li>
+                {% endfor %}
+                </ul>
+        </ul>
+        <div class="row">
+        {% if appointment.status == "Scheduled" %}
+            <div class="col">
+                <a href="{% url 'appointment_update' appointment.pk %}" class="btn btn-warning" id="action-button">Edit Appointment</a>
+            </div>
+        {% endif %}
+            <div class="col">
+                <a href="{% url 'appointment_delete' appointment.pk %}" class="btn btn-danger" id="action-button">Delete Appointment</a>
+            </div>  
+        </div> 
+        <br>
+        <a href="{% url 'appointment_list' %}" class="btn btn-secondary" id="back-button">Back</a>
+    </div>
+</div>    
+{% endblock content %}

@@ -1,9 +1,17 @@
 {% extends 'app/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
-    <div class="container" id="home-container">
-        <h1>THIS IS HOME</h1>
-        <h1> Login and Register for Customers is Functional <br><br>
-            Pet Profile Management in Customer Account is Functional w/ CRUD </h1>
+<div class="container" id="home-container">
+    <div id="home-greetings">
+        <h1 id="home-title">Cuddle Crest</h1>
+        <h1 id="home-sub-title">Pet Daycare Center</h1>
+        <br>
+        {% if user.is_staff %}
+            <h1>Welcome Admin {{ user.username }}!</h1>
+        {% else %}
+            <h1>Welcome {{ user.username }}!</h1>
+        {% endif %}
     </div>
-{% endblock content %} 
+</div>
+{% endblock content %}

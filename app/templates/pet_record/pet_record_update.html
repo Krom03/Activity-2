@@ -1,0 +1,55 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <h3 id="edit-details" class="form-heading">Update Pet Profile</h2>
+        <form id="create-edit-form" action="{% url 'pet_record_update' record.pk %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="pet" class="form-label">Pet Name</label>
+                <select id="pet" name="pet" class="form-select" required>
+                    {% for pet in pets %}
+                        <option value="{{ pet.pk }}" {% if pet.pk == record.pet.pk %}selected{% endif %}>{{ pet.pet_name }}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" id="date" name="date" class="form-control" value="{{ record.date|date:'Y-m-d' }}" required>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="check-in-time" class="form-label">Check-in Time</label>
+                    <input type="time" id="check-in-time" name="check_in_time" value="{{ record.check_in_time|time:'H:i' }}" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="check-out-time" class="form-label">Check-out Time</label>
+                    <input type="time" id="check-out-time" name="check_out_time" value="{{ record.check_out_time|time:'H:i' }}" class="form-control">
+                </div>
+            </div>
+        
+            <div class="mb-3">
+                <label for="activities" class="form-label">Activities</label>
+                <textarea id="activities" name="activities" class="form-control" rows="3">{{ record.activities }}</textarea>
+            </div>
+        
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea id="notes" name="notes" class="form-control" rows="3">{{ record.notes }}</textarea>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-success" id="action-button">Save</button>
+                </div>
+                <div class="col">
+                    <a href="{% url 'pet_record_list' %}" class="btn btn-secondary" id="back-button">Back to Pets</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

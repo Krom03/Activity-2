@@ -1,18 +1,40 @@
 from django.urls import path
-from .views import HomePageView, LoginPageView, RegisterPageView, AdminHomePageView, CustomerHomePageView, CustomerPetsPageView, CustomerPetDetailView, CustomerPetCreateView, CustomerPetUpdateView, CustomerPetDeleteView
-from django.contrib.auth.views import LogoutView
-
+from django.conf import settings
+from django.conf.urls.static import static
+from .views import (
+    HomePageView,
+    PetProfileListView, PetProfileDetailView, PetProfileCreateView, PetProfileUpdateView, PetProfileDeleteView,
+    ServicesListView, ServicesDetailView, ServicesCreateView, ServicesUpdateView, ServicesDeleteView,
+    AppointmentListView, AppointmentDetailView, AppointmentCreateView, AppointmentUpdateView, AppointmentDeleteView,
+    PetRecordListView, PetRecordDetailView, PetRecordCreateView, PetRecordUpdateView, PetRecordDeleteView
+)
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
-    path('login/', LoginPageView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
-    path('register/', RegisterPageView.as_view(), name='register'),
-    path('admin-dashboard/', AdminHomePageView.as_view(), name='admin-dashboard'),
-    path('customer-dashboard/', CustomerHomePageView.as_view(), name='customer-dashboard'),
-    path('customer-pets/', CustomerPetsPageView.as_view(), name='customer-pets'),
-    path('customer-petdetail/<int:pk>/', CustomerPetDetailView.as_view(), name='pet-detail'),
-    path('customer-addpet/', CustomerPetCreateView.as_view(), name='add-pet'),
-    path('pets/<int:pk>/update/', CustomerPetUpdateView.as_view(), name='update-pet'),
-    path('pets/<int:pk>/delete/', CustomerPetDeleteView.as_view(), name='delete-pet')
+
+    path('pet-profile/', PetProfileListView.as_view(), name='pet_profile_list'),
+    path('pet-profile/<int:pk>/', PetProfileDetailView.as_view(), name='pet_profile_detail'),
+    path('pet-profile/create/', PetProfileCreateView.as_view(), name='pet_profile_create'),
+    path('pet-profile/<int:pk>/update/', PetProfileUpdateView.as_view(), name='pet_profile_update'),
+    path('pet-profile/<int:pk>/delete/', PetProfileDeleteView.as_view(), name='pet_profile_delete'),
+    
+    path('services/', ServicesListView.as_view(), name='services_list'),
+    path('services/<int:pk>/', ServicesDetailView.as_view(), name='services_detail'),
+    path('services/create/', ServicesCreateView.as_view(), name='services_create'),
+    path('services/<int:pk>/update/', ServicesUpdateView.as_view(), name='services_update'),
+    path('services/<int:pk>/delete/', ServicesDeleteView.as_view(), name='services_delete'),
+
+    path('appointments/', AppointmentListView.as_view(), name='appointment_list'),
+    path('appointments/<int:pk>/', AppointmentDetailView.as_view(), name='appointment_detail'),
+    path('appointments/create/', AppointmentCreateView.as_view(), name='appointment_create'),
+    path('appointments/<int:pk>/update/', AppointmentUpdateView.as_view(), name='appointment_update'),
+    path('appointments/<int:pk>/delete/', AppointmentDeleteView.as_view(), name='appointment_delete'),
+
+    path('pet-record/', PetRecordListView.as_view(), name='pet_record_list'),
+    path('pet-record/<int:pk>/', PetRecordDetailView.as_view(), name='pet_record_detail'),
+    path('pet-record/create/', PetRecordCreateView.as_view(), name='pet_record_create'),
+    path('pet-record/<int:pk>/update/', PetRecordUpdateView.as_view(), name='pet_record_update'),
+    path('pet-record/<int:pk>/delete/', PetRecordDeleteView.as_view(), name='pet_record_delete'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

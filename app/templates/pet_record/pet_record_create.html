@@ -1,0 +1,52 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <h3 id="title-header">Create Pet Record</h2>
+        <form id="create-edit-form" method="post" action="{% url 'pet_record_create' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="pet" class="form-label">Pet Name</label>
+                <select id="pet" name="pet" class="form-select" required>
+                    {% for pet in pets %}
+                        <option value="{{ pet.pk }}">{{ pet.pet_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" id="date" name="date" class="form-control" style="max-width: 100%;" required>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="check-in-time" class="form-label">Check-in Time</label>
+                    <input type="time" id="check-in-time" name="check_in_time" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="check-out-time" class="form-label">Check-out Time</label>
+                    <input type="time" id="check-out-time" name="check_out_time" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="activities" class="form-label">Activities</label>
+                <textarea id="activities" name="activities" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea id="notes" name="notes" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-success" id="action-button">Save</button>
+                </div>
+                <div class="col">
+                    <a href="{% url 'pet_record_list' %}" class="btn btn-secondary" id="back-button">Back to Pets</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <br> 
+        <br>
+        <h2 id="title-header">Delete Service?</h3> 
+        <br>
+        <ul id="details">
+            <li><strong>Service Name:</strong> {{ service.service_name }}</li>
+            <li><strong>Service Description</strong></li>
+            <li><p class="service-description">{{ service.service_description }}</p></li>
+            <li><strong>Price: ₱ </strong> {{ service.price }} </li>
+        </ul>
+        <div class="row">
+            <div class="col">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Confirm Delete" class="btn btn-danger" id="action-button">
+                </form>
+            </div>
+            <div class="col">
+                <a href="{% url 'services_list' %}" class="btn btn-secondary" id="back-button">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>    
+{% endblock content %}

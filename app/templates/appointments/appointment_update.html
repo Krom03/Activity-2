@@ -1,0 +1,61 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <h3 id="title-header">Edit Appointment</h2>
+        <form id="create-edit-form" action="{% url 'appointment_update' appointment.pk %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="appointment-pet" class="form-label">Pet Name</label>
+                <select id="appointment-pet" name="pet" class="form-select" required>
+                    {% for pet in pets %}
+                        <option value="{{ pet.pk }}" {% if pet.pk == appointment.pet.pk %}selected{% endif %}>
+                            {{ pet.pet_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="appointment-date" class="form-label">Date</label>
+                    <input type="date" id="appointment-date" name="date" class="form-control" value="{{ appointment.date|date:'Y-m-d' }}" required>
+                </div>
+                <div class="col">
+                    <label for="appointment-time" class="form-label" value="{{ appointment.time }}">Time</label>
+                    <input type="time" id="appointment-time" name="time" class="form-control" value="{{ appointment.time|time:'H:i' }}" required>
+                </div>
+            </div>
+            {% if request.user.is_staff %}
+                <div class="mb-3">
+                    <label for="appointment-status" class="form-label">Status</label>
+                    <select id="appointment-status" name="status" class="form-select" required>
+                        <option value="Scheduled">Scheduled</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+            {% else %}
+                <input type="hidden" name="status" value="Scheduled">
+            {% endif %}
+            <div class="mb-3">
+                <label for="appointment-services" class="form-label">Services</label> <br>
+                {% for service in form.services %}
+                    <label>
+                        {{ service.tag }} {{ service.choice_label }}
+                    </label><br>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-success" id="action-button">Edit Appointment</button>
+                </div>
+                <div class="col">
+                    <a href="{% url 'appointment_list' %}" class="btn btn-secondary" id="back-button">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+{% endblock content %}

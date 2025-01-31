@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container-fluid" id="login-account">
+    <div class="container">
+        <br> 
+        <br> 
+        <br>
+        <h3 id="login">Login</h3>
+        <form action="{% url 'login' %}" method="post" class="form-login" id="login-form">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
+                {{ form.username.errors }}
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                {{ form.password.errors }}
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-submit" id="log_in">Login</button>
+        </form> 
+    </div>
+</div>
+{% endblock content %}

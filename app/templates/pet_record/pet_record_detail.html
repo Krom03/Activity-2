@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container-fluid" id="page-container-headers">
+    <div class="container">
+        <br> 
+        <br>
+        <h2 id="title-header">Record Details</h3> 
+        <br>
+        <ul id="details">
+            <li><strong>Pet Name:</strong> {{ record.pet.pet_name }}</li>
+            <li><strong>Date:</strong> {{ record.date }}</li>
+            <li><strong>Check-in Time:</strong> {{ record.check_in_time }}</li>
+            <li><strong>Check-out Time:</strong> {{ record.check_out_time }}</li>
+            <li><strong>Activities:</strong></li>
+            <li><p class="activities">{{ record.activities }}</p></li>
+            <li><strong>Notes:</strong></li>
+            <li><p class="notes">{{ record.notes }}</p></li>
+        </ul>
+        <div class="row">
+            {% if user.is_staff %}
+            <div class="col">
+                <a href="{% url 'pet_record_update' record.pk %}" class="btn btn-warning" id="action-button">Edit Record</a>
+            </div>
+            <div class="col">
+                <a href="{% url 'pet_record_delete' record.pk %}" class="btn btn-danger" id="action-button">Delete Record</a>
+            </div> 
+            {% endif %} 
+        </div> 
+        <br>
+        <a href="{% url 'pet_record_list' %}" class="btn btn-secondary" id="back-button">Back</a>
+    </div>
+</div>    
+{% endblock content %}

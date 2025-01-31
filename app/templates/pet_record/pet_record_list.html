@@ -1,0 +1,52 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container" id="list-container">
+    <br>
+    <br>
+    <h1>Pet Records</h1> <br>
+    <div id="list-header">
+        <h3>List of Pet Records:</h3>
+        {% if user.is_staff %}
+        <a href="{% url 'pet_record_create' %}" class="btn btn-success">Add Record</a> 
+        {% endif %}
+    </div>
+    <br>
+    <ul>
+        {% for pet, records in pet_records.items %}
+            <li id="pet-records-list">
+                <div id="pet-left" id="pet-records">
+                    <br>
+                    <strong><h5>{{ pet.pet_name }}</h5></strong><br>
+                    {% if records %}
+                    <table class="table">
+                        <tbody>
+                            {% for record in records %}
+                            <tr >
+                                <td id="date">
+                                    <strong>Check-In Time:</strong> {{ record.check_in_time }}  <strong>Check-Out Time:</strong> {{ record.check_out_time }} <br>
+                                    <strong>Date:</strong> {{ record.date }}
+                                </td>
+                                <td>
+                                    <a href="{% url 'pet_record_detail' record.pk %}" class="btn btn-info">View Record</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                        <li id="list-items">
+                            <p>No records found.</p>
+                        </li>
+                    {% endif %}
+                </div>
+            </li>
+        {% empty %}
+            <li id="list-items">
+                <p>No records found.</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<br>  
+<br>
+{% endblock content %}
